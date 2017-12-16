@@ -19,9 +19,8 @@ def getIntervals(scale):
 	return main_intervals, alt_intervals
 
 # intervals
-SCALE = [0,2,4,7,9]
-MAIN_INTERVALS, EXTRA_INTERVALS = getIntervals(SCALE)
-# print MAIN_INTERVALS, EXTRA_INTERVALS
+# SCALE = [0,2,4,7,9]
+# MAIN_INTERVALS, EXTRA_INTERVALS = getIntervals(SCALE)
 MAIN_INTERVALS = [4,5]
 EXTRA_INTERVALS = [1,1,1,2,2,2,3,5,6,6,7,7,8,9]
 
