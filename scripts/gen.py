@@ -22,8 +22,8 @@ def getIntervals(scale):
 SCALE = [0,2,4,7,9]
 MAIN_INTERVALS, EXTRA_INTERVALS = getIntervals(SCALE)
 # print MAIN_INTERVALS, EXTRA_INTERVALS
-MAIN_INTERVALS = [1,1]
-EXTRA_INTERVALS = [4,3]
+MAIN_INTERVALS = [4,5]
+EXTRA_INTERVALS = [1,1,1,2,2,2,3,5,6,6,7,7,8,9]
 
 # constants
 RANGE = {"bottom": 6, "top": 15}
@@ -34,8 +34,8 @@ REPEATED_PHRASE_LENGTHS = [3,5,7,9]
 STARTING_NOTE = 12
 NUM_NOTES = 8 * 48
 TEMPO = 190
-P_BASELINE = {"up_p": .5, "half_p": .5, "intervalic_p": .1, "rest_p": .000, "rep_p": 0}
-P_UPDATES = {"up_p": .1, "half_p": .4, "intervalic_p": .00, "rest_p": .000, "rep_p": 0}
+P_BASELINE = {"up_p": .5, "half_p": .5, "intervalic_p": .3, "rest_p": .000, "rep_p": 0}
+P_UPDATES = {"up_p": .2, "half_p": .4, "intervalic_p": .15, "rest_p": .000, "rep_p": 0}
 
 # varyings
 up_p = P_BASELINE["up_p"]
