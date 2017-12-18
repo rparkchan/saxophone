@@ -1,3 +1,3 @@
 # saxophone
 
-collection of python scripts for misc. saxophone exercises
+collection of python scripts for miscellaneous saxophone exercises
