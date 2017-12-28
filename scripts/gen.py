@@ -34,7 +34,7 @@ STARTING_NOTE = 12
 NUM_NOTES = 8 * 48
 TEMPO = 190
 P_BASELINE = {"up_p": .5, "half_p": .5, "intervalic_p": .3, "rest_p": .000, "rep_p": 0}
-P_UPDATES = {"up_p": .2, "half_p": .4, "intervalic_p": .15, "rest_p": .000, "rep_p": 0}
+P_UPDATES = {"up_p": .3, "half_p": .4, "intervalic_p": .15, "rest_p": .000, "rep_p": 0}
 
 # varyings
 up_p = P_BASELINE["up_p"]

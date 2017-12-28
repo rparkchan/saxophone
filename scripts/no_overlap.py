@@ -9,7 +9,7 @@ STARTING_NOTE = 15
 NUM_PITCHES = 12
 NUM_REPS = 32
 POSSIBLE_RANGE = [2, 30]
-STARTING_RANGE = [1,12]
+STARTING_RANGE = [12,23]
 RANGE_UPDATES = [1]
 TEMPO = 190
 
@@ -39,7 +39,7 @@ for i in range(NUM_REPS):
 		container.append(Note(current_note, 1/8.))
 
 	# if random.random() <= up_p:
-	pitches = [pitch + random.choice(RANGE_UPDATES) for pitch in pitches]
+	# pitches = [pitch + random.choice(RANGE_UPDATES) for pitch in pitches]
 	# up_p = up_p - P_UPDATES["up_p"]
 	# else:
 	# 	pitches = [pitch - random.choice(RANGE_UPDATES) for pitch in pitches]
