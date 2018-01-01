@@ -21,8 +21,8 @@ def getIntervals(scale):
 # intervals
 # SCALE = [0,2,4,7,9]
 # MAIN_INTERVALS, EXTRA_INTERVALS = getIntervals(SCALE)
-MAIN_INTERVALS = [7,5]
-EXTRA_INTERVALS = [1,1,1,2,2,2,3,5,6,6,4,4,8,9]
+MAIN_INTERVALS = [4,5]
+EXTRA_INTERVALS = [1,1,1,2,2,2,3,5,6,6,7,7,8,9]
 
 # constants
 RANGE = {"bottom": 6, "top": 15}
@@ -34,7 +34,7 @@ STARTING_NOTE = 12
 NUM_NOTES = 8 * 48
 TEMPO = 190
 P_BASELINE = {"up_p": .5, "half_p": .5, "intervalic_p": .3, "rest_p": .000, "rep_p": 0}
-P_UPDATES = {"up_p": .3, "half_p": .4, "intervalic_p": .15, "rest_p": .000, "rep_p": 0}
+P_UPDATES = {"up_p": .4, "half_p": .4, "intervalic_p": .15, "rest_p": .000, "rep_p": 0}
 
 # varyings
 up_p = P_BASELINE["up_p"]
