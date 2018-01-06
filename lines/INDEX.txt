@@ -3,6 +3,4 @@ alto lines:
 0181: 4-7
 0581: 16-25, 25-28, 29-33
 0762: 18-26 (replace 2nd C# with B in 24), 28-38
-0789: 4-11 (replace E with C in 11), 21-32 (skip 24, 28)
-
-also that one screenshot is good
+0789: 4-11 (replace E with C in 11), 21-32 (replace 2nd Ab with A in 31) [-24, -28]
