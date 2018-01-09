@@ -8,7 +8,7 @@ doodoodooodoodoo
 
 new: 
 0581: 29-33
-0762: 18-26 (replace 2nd C# with B in 24), 2=8-38 [w/o 34, 35, 36]
-0789: 4-11 (replace E with C in 11), 21-32 (replace 2nd Ab with A in 31) [w/o 24, 28]
+0762: 18-26 (replace 2nd C# with B in 24), 28-38 [w/o 34, 35, 36]
+0789: 4-10, 21-32 (replace 2nd Ab with A in 31) [w/o 24, 28]
 0795: 25-34 [w/o 32]
 0797: 1-8
