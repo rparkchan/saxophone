@@ -103,9 +103,9 @@ for i in range(NUM_NOTES):
 		# 	go_up = True
 		# else:
 		# 	go_up = False
-		if counter == 0:
+		if counter % 10 == 0:
 			go_up = True
-		if counter > 10:
+		elif counter % 10 == 5:
 			go_up = False
 
 # repeat phrases (constant probability)
