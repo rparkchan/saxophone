@@ -4,7 +4,7 @@ Bb: {D Eb B} {F# Bb Eb} {F# E Bb} {D A D}
 
 B: {E Bb F#} {Eb F C#} {G E C}
 
-C: {F# B Eb} “{F# D Ab}”
+C: {F# B Eb} {F# D Ab}
 
 C#: {F# B E} {G# *C# D} {Eb Bb D} {Ab Eb A}
 
