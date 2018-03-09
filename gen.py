@@ -23,6 +23,8 @@ def getIntervals(scale):
 # MAIN_INTERVALS, EXTRA_INTERVALS = getIntervals(SCALE)
 MAIN_INTERVALS = [4,5]
 EXTRA_INTERVALS = [1,1,1,2,2,2,3,5,6,6,7,7,8,9]
+MAIN_INTERVALS = [1,2]
+EXTRA_INTERVALS = [4,4,5,5,3,5,6,6,7,7,8,9]
 
 # constants
 RANGE = {"bottom": 6, "top": 15}

@@ -1,23 +1,23 @@
-A: {F# Eb C} {F A D} {D F# C#}
+A: 1.{F# Eb C} 2.{F A D} 2.{D F# C#}
 
-Bb: {D Eb B} {F# Bb Eb} {F# E Bb} {D A D}
+Bb: 1.{D Eb B} 2.{F# E Bb} 3.{F# Bb Eb} 5.{D A D}
 
-B: {E Bb F#} {Eb F C#} {G E C}
+B: 1.{E Bb F#} 3.{Eb F C#} 6.{G E C}
 
-C: {F# B Eb} {F# D Ab}
+C: 1.{F# B Eb} 6.{F# D Ab}
 
-C#: {F# B E} {G# *C# D} {Eb Bb D} {Ab Eb A}
+C#: 2.{F# B E} 4.{G# *C# D} 4.{Eb Bb D} 7.{Ab Eb A}
 
-D: {C# Eb B} {Eb Bb F} {Bb Eb F#}
+D: 2.{C# Eb B} 4.{Eb Bb F} 5.{Bb Eb F#}
 
-Eb: {A Bb Eb} {Ab D Bb} {D A E}
+Eb: 3.{A Bb Eb} 4.{Ab D Bb} 5.{D A E}
 
-E: {A D Eb} {C Ab A} {A D Bb}
+E: 4.{A D Eb} 7.{C Ab A} 7.{A D Bb}
 
-F: {C# G# C#} {B G E}
+F: 6.{C# G# C#} 6.{B G E}
 
-F#: {Eb C F#} {G Bb D}
+F#: 1.{Eb C F#} 7.{G Bb D}
 
-G: {D F# B} {Bb D Ab}
+G: 3.{D F# B} 7.{Bb D Ab}
 
-Ab: {G C# B} {C# B Eb} {C# E *C} {C# Bb Eb}
+Ab: 2.{G C# B} 3.{C# B Eb} 5.{C# E *C} 6.{C# Bb Eb}
