@@ -35,15 +35,15 @@ REPEATED_PHRASE_LENGTHS = [3,5,7,9]
 STARTING_NOTE = 12
 NUM_NOTES = 8 * 48
 TEMPO = 190
-P_BASELINE = {"up_p": .5, "half_p": .5, "intervalic_p": .3, "rest_p": .000, "rep_p": 0}
-P_UPDATES = {"up_p": .4, "half_p": .4, "intervalic_p": .15, "rest_p": .000, "rep_p": 0}
+P_IN = {"up_p": .5, "half_p": .5, "intervalic_p": .3, "rest_p": .000, "rep_p": 0}
+P_UP = {"up_p": .4, "half_p": .4, "intervalic_p": .15, "rest_p": .000, "rep_p": 0}
 
 # varyings
-up_p = P_BASELINE["up_p"]
-half_p = P_BASELINE["half_p"]
-intervalic_p = P_BASELINE["intervalic_p"]
-rest_p = P_BASELINE["rest_p"]
-rep_p = P_BASELINE["rep_p"]
+up_p = P_IN["up_p"]
+half_p = P_IN["half_p"]
+intervalic_p = P_IN["intervalic_p"]
+rest_p = P_IN["rest_p"]
+rep_p = P_IN["rep_p"]
 counter = 0
 go_up = True
 
@@ -63,13 +63,13 @@ for i in range(NUM_NOTES):
 	container.append(Note(current_note, 1/8.))
 
 	# update probabilities and varyings: keep within range
-	up_p = up_p - P_UPDATES["up_p"] if direction == 1 else up_p + P_UPDATES["up_p"]
+	up_p = up_p - P_UP["up_p"] if direction == 1 else up_p + P_UP["up_p"]
 	if (step_size == MAIN_INTERVALS[0]):
-		half_p = half_p - P_UPDATES["half_p"]
+		half_p = half_p - P_UP["half_p"]
 	elif (step_size == MAIN_INTERVALS[1]):
-		half_p = half_p + P_UPDATES["half_p"]
-	intervalic_p = intervalic_p + P_UPDATES["intervalic_p"]
-	rest_p = rest_p + P_UPDATES["rest_p"]
+		half_p = half_p + P_UP["half_p"]
+	intervalic_p = intervalic_p + P_UP["intervalic_p"]
+	rest_p = rest_p + P_UP["rest_p"]
 
 	# direction
 	if (current_note <= RANGE["bottom"]):
@@ -84,12 +84,12 @@ for i in range(NUM_NOTES):
 	# extra step
 	if (random.random() < intervalic_p):
 		step_size = random.choice(EXTRA_INTERVALS)
-		intervalic_p = P_BASELINE["intervalic_p"]
+		intervalic_p = P_IN["intervalic_p"]
 
 	# rest
 	if (random.random() < rest_p):
 		container.append(Rest('r8'))
-		rest_p = P_BASELINE["rest_p"]
+		rest_p = P_IN["rest_p"]
 
 	# range
 	if i % NUM_NOTES_RANGE_UPDATE == 0:
