@@ -1,4 +1,4 @@
-A: {D C# Eb} (2)
+A: {D C# Eb} (2) 
 
 Bb: {D Eb B} {F# Bb Eb} {D A D} (1,3,5)
 
