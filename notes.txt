@@ -1,10 +1,10 @@
 A:
 
-Bb:
+Bb: {F# Ab D} (1)
 
 B:
 
-C:
+C: {F# Bb D} (1)
 
 C#:
 
@@ -16,10 +16,10 @@ E:
 
 F:
 
-F#:
+F#: {Bb D E} (1)
 
 G:
 
-Ab:
+Ab: {D Ab Eb} (1)
 
 
