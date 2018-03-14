@@ -1,16 +1,16 @@
-A:
+A: {D C# Eb} (2)
 
-Bb: {F# Ab D} (1)
+Bb: 
 
-B:
+B: {F C F#} (1)
 
 C: {F# Bb D} (1)
 
-C#:
+C#: {F# C G} (2)
 
-D:
+D: {C# Eb B} (2)
 
-Eb:
+Eb: {B C G} (2)
 
 E:
 
