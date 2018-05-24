@@ -14,7 +14,7 @@ C#*:
 
 D: {E B F} (1)
 
-Eb: {C# D F#} (4)
+Eb: {C# D F} (4)
 
 E: {C Ab A} (6)
 
@@ -24,6 +24,6 @@ F#: {B Ab D} (4)
 
 G: {C# A D} (8)
 
-Ab: {Eb C F} {D/Eb C D} {C# Bb Eb} (1,5)
+Ab: {Eb C F} {D/Eb C D} {C# Bb Eb} (1,3,5)
 
 
