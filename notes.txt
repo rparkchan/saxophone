@@ -2,25 +2,25 @@ A: {D C# Eb} {C# Eb Bb} (2,3)
 
 Bb: {D C D} {F# C# F} {Eb F# Bb} (3,7,9)
 
-B: {F C F#} {C* G C#} {Eb Ab D/Eb} (1,2,3)
+B: {F C F#} {Eb Ab D/Eb} (1,3)
 
-C: {F# Bb D} {G C# B} (1,2)
+C: {F# Bb D} (1)
 
-C*:
+C*: {G C# F#} (2)
 
-C#: {F# B/C E} {E C G} {Ab Eb Bb} (2,4,4)
+C#: {Eb B C} {E C G} {Ab Eb Bb} (2,4,4)
 
 C#*: 
 
 D: {E B F} (1)
 
-Eb: {C# D F} (4)
+Eb: {C# D F} {C# G B} (4,5)
 
 E: {C Ab A} (6)
 
 F: {C# F# C#} (5)
 
-F#: {B Ab D} (4)
+F#: {E Bb E} {B Ab D} (2,4)
 
 G: {C# A D} (8)
 
