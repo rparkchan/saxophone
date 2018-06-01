@@ -4,20 +4,6 @@ from collections import Counter
 from abjad import *
 from copy import deepcopy
 
-# return a list of the two most common intervals and then all other possible intervals
-def getIntervals(scale):
-	all_intervals = []
-	for i in range(len(scale)):
-		for j in range(len(scale)):
-			if (i != j):
-				all_intervals.append(abs(scale[i] - scale[j]))
-	cntr = Counter(all_intervals)
-
-	main_intervals = [cntr.most_common(2)[0][0], cntr.most_common(2)[1][0]]
-	alt_intervals = [interval for interval in all_intervals if interval not in main_intervals]
-
-	return main_intervals, alt_intervals
-
 # intervals
 # SCALE = [0,2,4,7,9]
 # MAIN_INTERVALS, EXTRA_INTERVALS = getIntervals(SCALE)
@@ -52,7 +38,7 @@ direction = 1 if random.random() < up_p else -1
 step_size = MAIN_INTERVALS[0] if random.random() < half_p else MAIN_INTERVALS[1]
 current_pitch = STARTING_NOTE
 
-# generate initial set of notes
+# generate pitches
 container = []
 for i in range(NUM_NOTES):
 	current_pitch = current_pitch + step_size * direction
@@ -97,10 +83,6 @@ for i in range(NUM_NOTES):
 			RANGE["bottom"] = RANGE["bottom"] - RANGE_UPDATE
 			RANGE["top"] = RANGE["top"] - RANGE_UPDATE	
 			counter = counter - 1
-		# if random.random() <= .5:
-		# 	go_up = True
-		# else:
-		# 	go_up = False
 		if counter % 10 == 0:
 			go_up = True
 		elif counter % 10 == 5:
