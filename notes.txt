@@ -8,7 +8,7 @@ C: {F# Bb D} (1)
 
 C*: {G C# F#} (2)
 
-C#: {Eb B C} {E C G} {Ab Eb Bb} (2,4,4)
+C#: {Eb B C*} {E C G} {Ab Eb Bb} (2,4,4)
 
 C#*: 
 
