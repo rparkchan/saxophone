@@ -20,7 +20,6 @@ NUM_REPEATED_PHRASES = 5
 REPEATED_PHRASE_LENGTHS = [3,5,7,9]
 STARTING_NOTE = 12
 NUM_NOTES = 8 * 48
-TEMPO = 190
 P_IN = {"up_p": .5, "half_p": .5, "intervalic_p": .3, "rest_p": .000, "rep_p": 0}
 P_UP = {"up_p": .4, "half_p": .4, "intervalic_p": .15, "rest_p": .000, "rep_p": 0}
 
@@ -94,7 +93,7 @@ instruments = set(['Flute'])
 parts = {instrument: Staff([], name=instrument) for instrument in instruments}
 parts['Flute'].extend(container)
 score = Score([parts[instrument] for instrument in parts], name="poopy")
-attach(MetronomeMark((1,4), TEMPO), parts['Flute'][0])
+attach(MetronomeMark((1,4), 190), parts['Flute'][0])
 show(score)
 
 # # out to Sibelius?
