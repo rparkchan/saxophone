@@ -5,7 +5,7 @@ from abjad import *
 from copy import deepcopy
 
 container = []
-pitches = set([25, 24.5, 24, 23.5, 23, 22.5, 22, 21.5, 21, 20.5, 20])
+pitches = set([18, 18.5, 19, 20, 24])
 last_pitch = 16
 for i in range(100):
 	curr_pitch = random.choice(list(pitches - set([last_pitch])))
