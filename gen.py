@@ -7,22 +7,22 @@ from copy import deepcopy
 # intervals
 # SCALE = [0,2,4,7,9]
 # MAIN_INTERVALS, EXTRA_INTERVALS = getIntervals(SCALE)
-# MAIN_INTERVALS = [4,5]
-# EXTRA_INTERVALS = [1,1,1,2,2,2,3,5,6,6,7,7,8,9]
+MAIN_INTERVALS = [4,5]
+EXTRA_INTERVALS = [1,1,1,2,2,2,3,5,6,6,7,7,8,9]
 # MAIN_INTERVALS = [4,5]
 # EXTRA_INTERVALS = [1,2,3,5,6,6,7,7,8,8,9]
-MAIN_INTERVALS = [1.5,4.5]
-EXTRA_INTERVALS = [.5,2,2.5,4.5,5,5.5,7]
+# MAIN_INTERVALS = [1.5,4.5]
+# EXTRA_INTERVALS = [.5,2,2.5,4.5,5,5.5,7]
 
 # constants
-# RANGE = {"bottom": 6, "top": 15}
-RANGE = {"bottom": 7, "top": 21}
+RANGE = {"bottom": 6, "top": 15}
+# RANGE = {"bottom": 7, "top": 21}
 RANGE_UPDATE = 1
 NUM_NOTES_RANGE_UPDATE = 10
 NUM_REPEATED_PHRASES = 5
 REPEATED_PHRASE_LENGTHS = [3,5,7,9]
 STARTING_NOTE = 12
-NUM_NOTES = 8 * 4
+NUM_NOTES = 8 * 48
 P_IN = {"up_p": .5, "half_p": .5, "intervalic_p": .3, "rest_p": .000, "rep_p": 0}
 P_UP = {"up_p": .4, "half_p": .4, "intervalic_p": .15, "rest_p": .000, "rep_p": 0}
 # P_IN = {"up_p": .5, "half_p": .5, "intervalic_p": .3, "rest_p": .000, "rep_p": 0}
