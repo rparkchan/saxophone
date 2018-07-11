@@ -5,9 +5,14 @@ from collections import Counter
 from abjad import *
 from copy import deepcopy
 
-# note bank 
-# BANK = [25,24.5,24,23.5,23,22.5,22,21.5,21,20.5,20,19,18.5,18,17.5,17,16.5,16]
-BANK = [5,5.5,6,6.5,7,8,8.5,9,9.5,10,10.5,11,11.5,12,12.5,13,14,14.5,15,15.5,16,16.5,17,17.5,18,18.5,19,20,20.5,21,21.5,22,22.5,23,23.5,24,24.5,25]
+# # HIGH
+# BANK = [27,26.5,26,25.5,25,24.5,24,23.5,23,22.5,22,21.5,21,20.5,20,19,18.5,18,17.5,17,16.5,16]
+
+# # ALL
+# BANK = [5,5.5,6,6.5,7,8,8.5,9,9.5,10,10.5,11,11.5,12,12.5,13,14,14.5,15,15.5,16,16.5,17,17.5,18,18.5,19,20,20.5,21,21.5,22,22.5,23,23.5,24,24.5,25,25.5,26,26.5,27]
+
+# SCALE 0
+BANK = [3,5,6.5,8,9.5,10.5,11,13,15,17,18.5,20,21.5,22.5,23,25,27]
 
 # intervals
 MAIN_INTERVALS = [3,5]
@@ -32,7 +37,8 @@ go_up = True
 # fill container with pitches
 container = []
 for i in range(10):
-	curr_index = BANK.index(7)
+	START_WITH = False
+	curr_index = BANK.index(17.)
 	direction = 1
 	step_size = 0
 	for j in range(NUM_NOTES):
@@ -69,8 +75,11 @@ for i in range(10):
 	# add rests
 	for k in range(8): container.append(11)
 
+
 # make/show score
 cont = [Note(pit,1/8.) for pit in container]
+if not START_WITH:
+	cont.reverse()
 staff = Staff(cont)
 score = Score([staff])
 show(score)
