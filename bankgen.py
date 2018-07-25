@@ -11,12 +11,18 @@ from copy import deepcopy
 # # ALL
 # BANK = [5,5.5,6,6.5,7,8,8.5,9,9.5,10,10.5,11,11.5,12,12.5,13,14,14.5,15,15.5,16,16.5,17,17.5,18,18.5,19,20,20.5,21,21.5,22,22.5,23,23.5,24,24.5,25,25.5,26,26.5,27]
 
-# SCALE 0
-BANK = [3,5,6.5,8,9.5,10.5,11,13,15,17,18.5,20,21.5,22.5,23,25,27]
+# SCALE 0 - fantastic for upper regsiter lines
+BANK = [5.5,6.5,8,9.5,11,13,14.5,16,17.5,18.5,20,21.5,22.5,23,25,27]
+
+# # SCALE 1
+# BANK = [25,23.5,20,18]
 
 # intervals
 MAIN_INTERVALS = [3,5]
 EXTRA_INTERVALS = [1,2,3,4,5,6,6,7,7,8,8,9,10,11,12]
+
+MAIN_INTERVALS = [1,2]
+EXTRA_INTERVALS = [3]
 
 # constants
 NUM_REPEATED_PHRASES = 5
@@ -37,8 +43,8 @@ go_up = True
 # fill container with pitches
 container = []
 for i in range(10):
-	START_WITH = False
-	curr_index = BANK.index(17.)
+	START_WITH = True
+	curr_index = BANK.index(11)
 	direction = 1
 	step_size = 0
 	for j in range(NUM_NOTES):
