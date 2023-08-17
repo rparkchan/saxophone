@@ -1,7 +1,7 @@
 import numpy as np
 import random
 from collections import Counter
-from abjad import *
+import abjad
 from copy import deepcopy
 
 # intervals
@@ -93,13 +93,13 @@ for i in range(NUM_NOTES):
 			go_up = False
 
 # make/show score
-container = [Note(pit,1/8.) for pit in container]
+container = [abjad.Note(pit,1/8.) for pit in container]
 instruments = set(['Flute'])
-parts = {instrument: Staff([], name=instrument) for instrument in instruments}
+parts = {instrument: abjad.Staff([], name=instrument) for instrument in instruments}
 parts['Flute'].extend(container)
-score = Score([parts[instrument] for instrument in parts], name="poopy")
-attach(MetronomeMark((1,4), 190), parts['Flute'][0])
-show(score)
+score = abjad.Score([parts[instrument] for instrument in parts], name="poopy")
+# abjad.attach(abjad.MetronomeMark((1,4), 190), parts['Flute'][0])
+abjad.show(score)
 
 # # out to Sibelius?
 # should_show = raw_input("Out to sibelius? (y/n)")
