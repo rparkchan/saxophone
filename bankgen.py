@@ -2,7 +2,7 @@ import numpy as np
 import random
 import math
 from collections import Counter
-from abjad import *
+from abjad import Note, Staff, Score, show
 from copy import deepcopy
 
 # # HIGH

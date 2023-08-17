@@ -3,7 +3,7 @@
 
 import numpy as np
 import random
-from abjad import *
+from abjad import Note, Staff, Score, show, Rest
 
 # generate pitches
 c = []

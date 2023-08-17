@@ -1,6 +1,6 @@
 import numpy as np
 import random
-from abjad import *
+from abjad import Note, Staff, Score, show
 
 scales = [[25,21.5,19,17.5],[25,22.5,20.5,19],[25,21.5,20,18.5]]
 scales = [[22.5,20,18,17.5],[20,18.5,17.5,13],[10.5,13,8.5,7]]
