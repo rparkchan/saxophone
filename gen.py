@@ -4,21 +4,23 @@ from collections import Counter
 import abjad
 from copy import deepcopy
 
+random.seed(0)
 # intervals
 # SCALE = [0,2,4,7,9]
 # MAIN_INTERVALS, EXTRA_INTERVALS = getIntervals(SCALE)
-MAIN_INTERVALS = [4,5]
-EXTRA_INTERVALS = [1,1,1,2,2,2,3,5,6,6,7,7,8,9]
+# [2, 4, 3, 1, 2, 5, 2, 2]
+MAIN_INTERVALS = [2, 3]
+EXTRA_INTERVALS = [1, 2, 2, 4, 5]
 # MAIN_INTERVALS = [4,5]
 # EXTRA_INTERVALS = [1,2,3,5,6,6,7,7,8,8,9]
 # MAIN_INTERVALS = [1.5,4.5]
 # EXTRA_INTERVALS = [.5,2,2.5,4.5,5,5.5,7]
 
 # constants
-RANGE = {"bottom": 6, "top": 15}
+RANGE = {"bottom": 9, "top": 21}
 # RANGE = {"bottom": 7, "top": 21}
 RANGE_UPDATE = 1
-NUM_NOTES_RANGE_UPDATE = 10
+NUM_NOTES_RANGE_UPDATE = 100000
 NUM_REPEATED_PHRASES = 5
 REPEATED_PHRASE_LENGTHS = [3,5,7,9]
 STARTING_NOTE = 12
