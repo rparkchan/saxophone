@@ -12,8 +12,8 @@ from abjad import Note, Staff, Score, show, Rest
 
 ROW_LENGTH = 9
 COMPLETION_LENGTH = 3 # should usually add up to 12 but can lower to be less strict if you notice the phrases suck lol. Basically makes it "less 12 tone"
-MODULATION_AMOUNT = 2
-RANGE_START = 12
+MODULATION_AMOUNT = -1
+RANGE_START = 11
 
 container = []
 for _ in range(50):
@@ -21,12 +21,12 @@ for _ in range(50):
     bank = [*range(RANGE_START, RANGE_START + 12)]
     for j in range(COMPLETION_LENGTH):
         note = random.choice(bank)
-        while ((note + MODULATION_AMOUNT) % 12 + RANGE_START not in bank): # ensure you are picking a note whose modulation isn't already in the phrase
+        while ((note + MODULATION_AMOUNT) % 12 + 12 not in bank): # ensure you are picking a note whose modulation isn't already in the phrase
             note = random.choice(bank)
 
         newphrase.append(note)
         bank.remove(note)
-        bank.remove((note + MODULATION_AMOUNT) % 12 + RANGE_START)
+        bank.remove((note + MODULATION_AMOUNT) % 12 + 12)
 
     for k in range(ROW_LENGTH - COMPLETION_LENGTH):
         note = random.choice(bank)
@@ -34,7 +34,8 @@ for _ in range(50):
         bank.remove(note)
     
     modulatedNewPhrase = [note + MODULATION_AMOUNT for note in newphrase]
-    container = container + newphrase + modulatedNewPhrase
+    anotherModulatedNewPhrase = [note + MODULATION_AMOUNT * 2 for note in newphrase]
+    container = container + newphrase + modulatedNewPhrase + anotherModulatedNewPhrase
 
     while (len(container) % 8 != 0):
         container.append('rest')
