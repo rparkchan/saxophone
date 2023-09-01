@@ -13,22 +13,26 @@ from abjad import Note, Staff, Score, show, Rest
 ROW_LENGTH = 9
 COMPLETION_LENGTH = 3 # should usually add up to 12 but can lower to be less strict if you notice the phrases suck lol. Basically makes it "less 12 tone"
 MODULATION_AMOUNT = -1
-RANGE_START = 11
 MAXIMUM_INTERVAL = 7 # set to 12 for no constraint
-DESIRED_NUMBER_PHRASES = 10
+DESIRED_NUMBER_PHRASES = 5
 
 counter = 0
 container = []
 while (counter < DESIRED_NUMBER_PHRASES):
     newphrase = []
-    bank = [*range(RANGE_START, RANGE_START + 12)]
+    bank = [*range(12, 24)]
+    completionbank = bank.copy()
     for j in range(COMPLETION_LENGTH):
-        note = random.choice(bank)
+        note = random.choice(completionbank)
 
         newphrase.append(note)
         bank.remove(note)
-        if ((note + MODULATION_AMOUNT) % 12 + 12 in bank):
-            bank.remove((note + MODULATION_AMOUNT) % 12 + 12)
+        completionbank.remove(note)
+        bank.remove((note + MODULATION_AMOUNT) % 12 + 12)
+        if ((note + MODULATION_AMOUNT) % 12 + 12 in completionbank):
+            completionbank.remove((note + MODULATION_AMOUNT) % 12 + 12)
+        if ((note - MODULATION_AMOUNT) % 12 + 12 in completionbank):
+            completionbank.remove((note - MODULATION_AMOUNT) % 12 + 12)
 
     for k in range(ROW_LENGTH - COMPLETION_LENGTH):
         note = random.choice(bank)
@@ -42,7 +46,6 @@ while (counter < DESIRED_NUMBER_PHRASES):
     modulatedNewPhrase = [note + MODULATION_AMOUNT for note in newphrase]
     anotherModulatedNewPhrase = [note + MODULATION_AMOUNT * 2 for note in newphrase]
     container = container + newphrase + modulatedNewPhrase + anotherModulatedNewPhrase
-
     while (len(container) % 8 != 0):
         container.append('rest')
     
