@@ -13,6 +13,7 @@ from abjad import Note, Staff, Score, show, Rest
 ROW_LENGTH = 9
 COMPLETION_LENGTH = 3 # should usually add up to 12 but can lower to be less strict if you notice the phrases suck lol. Basically makes it "less 12 tone"
 MODULATION_AMOUNT = -1
+REPETITIONS = 3
 MAXIMUM_INTERVAL = 7 # set to 12 for no constraint
 DESIRED_NUMBER_PHRASES = 5
 
@@ -43,9 +44,9 @@ while (counter < DESIRED_NUMBER_PHRASES):
     if any([abs(k) > MAXIMUM_INTERVAL for k in differences]):
         continue
     
-    modulatedNewPhrase = [note + MODULATION_AMOUNT for note in newphrase]
-    anotherModulatedNewPhrase = [note + MODULATION_AMOUNT * 2 for note in newphrase]
-    container = container + newphrase + modulatedNewPhrase + anotherModulatedNewPhrase
+    for k in range(REPETITIONS):
+        container += [note + MODULATION_AMOUNT * k for note in newphrase]
+
     while (len(container) % 8 != 0):
         container.append('rest')
     
