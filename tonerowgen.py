@@ -12,10 +12,13 @@ from abjad import Note, Staff, Score, show, Rest
 
 ROW_LENGTH = 9
 COMPLETION_LENGTH = 3 # should usually add up to 12 but can lower to be less strict if you notice the phrases suck lol. Basically makes it "less 12 tone"
-MODULATION_AMOUNT = -1
-REPETITIONS = 3
-MAXIMUM_INTERVAL = 7 # set to 12 for no constraint
-DESIRED_NUMBER_PHRASES = 5
+MODULATION_AMOUNT = 4
+REPETITIONS = 4
+MAXIMUM_INTERVAL = 12 # set to 12 for no constraint
+MINIMUM_INTERVAL = 1 # set to 1 for no constraint
+DESIRED_NUMBER_PHRASES = 10
+
+POST_MODULATION = -8
 
 counter = 0
 container = []
@@ -41,7 +44,7 @@ while (counter < DESIRED_NUMBER_PHRASES):
         bank.remove(note)
     
     differences = [j-i for i, j in zip(newphrase[:-1], newphrase[1:])]
-    if any([abs(k) > MAXIMUM_INTERVAL for k in differences]):
+    if any([abs(k) > MAXIMUM_INTERVAL or abs(k) < MINIMUM_INTERVAL for k in differences]):
         continue
     
     for k in range(REPETITIONS):
@@ -52,7 +55,7 @@ while (counter < DESIRED_NUMBER_PHRASES):
     
     counter += 1
 
-cont = [Note(pitch,1/8.) if type(pitch) is int else Rest('r8') for pitch in container]
+cont = [Note(pitch + POST_MODULATION,1/8.) if type(pitch) is int else Rest('r8') for pitch in container]
 staff = Staff(cont)
 score = Score([staff])
 show(score)
