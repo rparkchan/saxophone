@@ -12,19 +12,19 @@ from abjad import Note, Staff, Score, show, Rest
 
 ROW_LENGTH = 9
 COMPLETION_LENGTH = 3 # should usually add up to 12 but can lower to be less strict if you notice the phrases suck lol. Basically makes it "less 12 tone"
-MODULATION_AMOUNT = 4
-REPETITIONS = 4
-MAXIMUM_INTERVAL = 12 # set to 12 for no constraint
+MODULATION_AMOUNT = 11
+REPETITIONS = 3
+MAXIMUM_INTERVAL = 10 # set to 12 for no constraint
 MINIMUM_INTERVAL = 1 # set to 1 for no constraint
 DESIRED_NUMBER_PHRASES = 10
 
-POST_MODULATION = -8
+POST_MODULATION = 2
 
 counter = 0
 container = []
 while (counter < DESIRED_NUMBER_PHRASES):
     newphrase = []
-    bank = [*range(12, 24)]
+    bank = [*range(0, 12)]
     completionbank = bank.copy()
     for j in range(COMPLETION_LENGTH):
         note = random.choice(completionbank)
@@ -32,23 +32,26 @@ while (counter < DESIRED_NUMBER_PHRASES):
         newphrase.append(note)
         bank.remove(note)
         completionbank.remove(note)
-        bank.remove((note + MODULATION_AMOUNT) % 12 + 12)
-        if ((note + MODULATION_AMOUNT) % 12 + 12 in completionbank):
-            completionbank.remove((note + MODULATION_AMOUNT) % 12 + 12)
-        if ((note - MODULATION_AMOUNT) % 12 + 12 in completionbank):
-            completionbank.remove((note - MODULATION_AMOUNT) % 12 + 12)
+        bank.remove((note + MODULATION_AMOUNT) % 12)
+        if ((note + MODULATION_AMOUNT) % 12 in completionbank):
+            completionbank.remove((note + MODULATION_AMOUNT) % 12)
+        if ((note - MODULATION_AMOUNT) % 12 in completionbank):
+            completionbank.remove((note - MODULATION_AMOUNT) % 12)
 
     for k in range(ROW_LENGTH - COMPLETION_LENGTH):
         note = random.choice(bank)
         newphrase.append(note)
         bank.remove(note)
-    
-    differences = [j-i for i, j in zip(newphrase[:-1], newphrase[1:])]
+        
+    combinedphrases = []
+    for k in range(REPETITIONS):
+        combinedphrases += [note + MODULATION_AMOUNT * k for note in newphrase]
+
+    differences = [j-i for i, j in zip(combinedphrases[:-1], combinedphrases[1:])]
     if any([abs(k) > MAXIMUM_INTERVAL or abs(k) < MINIMUM_INTERVAL for k in differences]):
         continue
-    
-    for k in range(REPETITIONS):
-        container += [note + MODULATION_AMOUNT * k for note in newphrase]
+
+    container += combinedphrases
 
     while (len(container) % 8 != 0):
         container.append('rest')
