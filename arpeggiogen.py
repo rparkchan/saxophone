@@ -1,4 +1,4 @@
-### generate arpeggio-like line going from one chosen note to another
+### generate arpeggio-like unidirectional line going from one chosen note to another using randomly chosen intervals
 
 import numpy as np
 import random
