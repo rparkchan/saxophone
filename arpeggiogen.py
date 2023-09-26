@@ -6,12 +6,13 @@ from abjad import Note, Staff, Score, show, Rest
 
 # random.seed(0)
 
-STARTING_PITCH = 0
-ENDING_PITCH = 23
-MAXIMUM_INTERVAL = 8 # set to 12 for no constraint
+STARTING_PITCH = 3
+ENDING_PITCH = 25
+MAXIMUM_INTERVAL = 6 # set to 12 for no constraint
 MINIMUM_INTERVAL = 1 # set to 1 for no constraint
+INVERT = True
 
-DESIRED_NUMBER_PHRASES = 10
+DESIRED_NUMBER_PHRASES = 25
 POST_MODULATION = 0
 
 counter = 0
@@ -21,11 +22,16 @@ while (counter < DESIRED_NUMBER_PHRASES):
 
     note = STARTING_PITCH
     while note <= ENDING_PITCH:
-        container.append(note)
+        newphrase.append(note)
         note += random.randint(MINIMUM_INTERVAL, MAXIMUM_INTERVAL)
         if (note >= ENDING_PITCH):
-            container.append(ENDING_PITCH)
+            newphrase.append(ENDING_PITCH)
             break
+    
+    if INVERT:
+        newphrase.reverse()
+
+    container += newphrase
     
     while (len(container) % 8 != 0):
         container.append('rest')

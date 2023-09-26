@@ -10,21 +10,21 @@ from abjad import Note, Staff, Score, show, Rest
 
 # random.seed(0)
 
-ROW_LENGTH = 9
-COMPLETION_LENGTH = 3 # should usually add up to 12 but can lower to be less strict if you notice the phrases suck lol. Basically makes it "less 12 tone"
-MODULATION_AMOUNT = 11
+ROW_LENGTH = 10
+COMPLETION_LENGTH = 2 # should usually add up to 12 but can lower to be less strict if you notice the phrases suck lol. Basically makes it "less 12 tone"
+MODULATION_AMOUNT = 4
 REPETITIONS = 3
-MAXIMUM_INTERVAL = 10 # set to 12 for no constraint
-MINIMUM_INTERVAL = 1 # set to 1 for no constraint
+MAXIMUM_INTERVAL = 12 # set to 12 for no constraint
+MINIMUM_INTERVAL = 2 # set to 1 for no constraint
 DESIRED_NUMBER_PHRASES = 10
 
-POST_MODULATION = 2
+POST_MODULATION = 8
 
 counter = 0
 container = []
 while (counter < DESIRED_NUMBER_PHRASES):
     newphrase = []
-    bank = [*range(0, 12)]
+    bank = [*range(0, 12)] # TODO: allow max range greater than 12, so have to remove all octaves of a note from the bank (in a loop over the bank I guess)
     completionbank = bank.copy()
     for j in range(COMPLETION_LENGTH):
         note = random.choice(completionbank)
@@ -52,6 +52,8 @@ while (counter < DESIRED_NUMBER_PHRASES):
         continue
 
     container += combinedphrases
+
+    container.append('rest')
 
     while (len(container) % 8 != 0):
         container.append('rest')
