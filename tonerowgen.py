@@ -7,18 +7,22 @@
 import numpy as np
 import random
 from abjad import Note, Staff, Score, show, Rest, persist, Block, LilyPondFile, lilypond, io
+import subprocess
 
 # random.seed(0)
 
 ROW_LENGTH = 9
-COMPLETION_LENGTH = 2 # should usually add up to 12 but can lower to be less strict if you notice the phrases suck lol. Basically makes it "less 12 tone"
+COMPLETION_LENGTH = 3 # should usually add up to 12 but can lower to be less strict if you notice the phrases suck lol. Basically makes it "less 12 tone"
 MODULATION_AMOUNT = 4
-REPETITIONS = 8
+REPETITIONS = 6
 MAXIMUM_INTERVAL = 12 # set to 12 for no constraint
 MINIMUM_INTERVAL = 2 # set to 1 for no constraint
-DESIRED_NUMBER_PHRASES = 1
+DESIRED_NUMBER_PHRASES = 10
+POST_MODULATION = 0
 
-POST_MODULATION = 8
+OUT_TO_MIDI = True
+OPEN_LOGIC = True
+SHOW_SCORE = True
 
 counter = 0
 container = []
@@ -70,8 +74,13 @@ file = LilyPondFile([score])
 lilypondString = lilypond(file).replace('<<', '{').replace('>>', '}').replace('new Score', 'score')
 index = lilypondString.find('}')
 withMidiBlock = lilypondString[:index + 1] + '\n    \midi { }' + lilypondString[index + 1:]
-with open('output/poopsy.ly', 'w') as textfile:
+with open('output/lines.ly', 'w') as textfile:
     textfile.write(withMidiBlock)
 
-io.run_lilypond('./output/poopsy.ly')
-show(score)
+if (OUT_TO_MIDI):
+    io.run_lilypond('./output/lines.ly')
+if (OPEN_LOGIC):
+    FileName = "./output/lines.midi"
+    subprocess.call(['open', FileName])
+if (SHOW_SCORE):
+    show(score)
