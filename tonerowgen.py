@@ -6,17 +6,17 @@
 
 import numpy as np
 import random
-from abjad import Note, Staff, Score, show, Rest
+from abjad import Note, Staff, Score, show, Rest, persist, Block, LilyPondFile, lilypond, io
 
 # random.seed(0)
 
-ROW_LENGTH = 10
+ROW_LENGTH = 9
 COMPLETION_LENGTH = 2 # should usually add up to 12 but can lower to be less strict if you notice the phrases suck lol. Basically makes it "less 12 tone"
 MODULATION_AMOUNT = 4
-REPETITIONS = 3
+REPETITIONS = 8
 MAXIMUM_INTERVAL = 12 # set to 12 for no constraint
 MINIMUM_INTERVAL = 2 # set to 1 for no constraint
-DESIRED_NUMBER_PHRASES = 10
+DESIRED_NUMBER_PHRASES = 1
 
 POST_MODULATION = 8
 
@@ -63,4 +63,15 @@ while (counter < DESIRED_NUMBER_PHRASES):
 cont = [Note(pitch + POST_MODULATION,1/8.) if type(pitch) is int else Rest('r8') for pitch in container]
 staff = Staff(cont)
 score = Score([staff])
+
+# in order to generate midi. We create a lilypond file string, manipulate it because
+# abjad defaults are horrendous, insert a `\midi { }` block, and then run lilypond on it
+file = LilyPondFile([score])
+lilypondString = lilypond(file).replace('<<', '{').replace('>>', '}').replace('new Score', 'score')
+index = lilypondString.find('}')
+withMidiBlock = lilypondString[:index + 1] + '\n    \midi { }' + lilypondString[index + 1:]
+with open('output/poopsy.ly', 'w') as textfile:
+    textfile.write(withMidiBlock)
+
+io.run_lilypond('./output/poopsy.ly')
 show(score)
