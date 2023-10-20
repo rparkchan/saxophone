@@ -13,14 +13,14 @@ import subprocess
 
 ROW_LENGTH = 9
 COMPLETION_LENGTH = 3 # should usually add up to 12 but can lower to be less strict if you notice the phrases suck lol. Basically makes it "less 12 tone"
-MODULATION_AMOUNT = 4
-REPETITIONS = 6
-MAXIMUM_INTERVAL = 12 # set to 12 for no constraint
-MINIMUM_INTERVAL = 2 # set to 1 for no constraint
-DESIRED_NUMBER_PHRASES = 10
+RANGE = 24
+MODULATION_AMOUNT = 2
+REPETITIONS = 7
+MAXIMUM_INTERVAL = 12 # set to 1000 for no constraint
+MINIMUM_INTERVAL = 1 # set to 1 for no constraint
+DESIRED_NUMBER_PHRASES = 20
 POST_MODULATION = 0
 
-OUT_TO_MIDI = True
 OPEN_LOGIC = True
 SHOW_SCORE = True
 
@@ -28,28 +28,33 @@ counter = 0
 container = []
 while (counter < DESIRED_NUMBER_PHRASES):
     newphrase = []
-    bank = [*range(0, 12)] # TODO: allow max range greater than 12, so have to remove all octaves of a note from the bank (in a loop over the bank I guess)
+    bank = [*range(0, RANGE)] # TODO: allow max range greater than 12, so have to remove all octaves of a note from the bank (in a loop over the bank I guess)
     completionbank = bank.copy()
-    for j in range(COMPLETION_LENGTH):
+    for _ in range(COMPLETION_LENGTH):
         note = random.choice(completionbank)
-
         newphrase.append(note)
-        bank.remove(note)
-        completionbank.remove(note)
-        bank.remove((note + MODULATION_AMOUNT) % 12)
-        if ((note + MODULATION_AMOUNT) % 12 in completionbank):
-            completionbank.remove((note + MODULATION_AMOUNT) % 12)
-        if ((note - MODULATION_AMOUNT) % 12 in completionbank):
-            completionbank.remove((note - MODULATION_AMOUNT) % 12)
 
-    for k in range(ROW_LENGTH - COMPLETION_LENGTH):
+        # remove all versions of the note and its modulation from the bank
+        for banknote in bank[:]:
+            if (banknote % 12 == note % 12 or banknote % 12 == (note + MODULATION_AMOUNT) % 12):
+                bank.remove(banknote)
+
+        # remove all versions of the note, its modulation, AND its inverse modulation from completion bank
+        for completionbanknote in completionbank[:]:
+            if (completionbanknote % 12 == note % 12 or completionbanknote % 12 == (note + MODULATION_AMOUNT) % 12 or completionbanknote % 12 == (note - MODULATION_AMOUNT) % 12 ):
+                completionbank.remove(completionbanknote)
+
+    for _ in range(ROW_LENGTH - COMPLETION_LENGTH):
         note = random.choice(bank)
         newphrase.append(note)
-        bank.remove(note)
+
+        for banknote in bank[:]:
+            if (banknote % 12 == note % 12):
+                bank.remove(banknote)
         
     combinedphrases = []
-    for k in range(REPETITIONS):
-        combinedphrases += [note + MODULATION_AMOUNT * k for note in newphrase]
+    for i in range(REPETITIONS):
+        combinedphrases += [note + MODULATION_AMOUNT * i for note in newphrase]
 
     differences = [j-i for i, j in zip(combinedphrases[:-1], combinedphrases[1:])]
     if any([abs(k) > MAXIMUM_INTERVAL or abs(k) < MINIMUM_INTERVAL for k in differences]):
@@ -77,9 +82,8 @@ withMidiBlock = lilypondString[:index + 1] + '\n    \midi { }' + lilypondString[
 with open('output/lines.ly', 'w') as textfile:
     textfile.write(withMidiBlock)
 
-if (OUT_TO_MIDI):
-    io.run_lilypond('./output/lines.ly')
 if (OPEN_LOGIC):
+    io.run_lilypond('./output/lines.ly')
     FileName = "./output/lines.midi"
     subprocess.call(['open', FileName])
 if (SHOW_SCORE):
